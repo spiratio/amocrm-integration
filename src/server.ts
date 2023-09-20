@@ -15,14 +15,14 @@ export class Server {
   private readonly dBClient: MongoDBClient;
   private logger: Logger;
 
-  constructor(clientId: string, clientSecret: string, DB_URL: string, redirectUrl: string) {
+  constructor(clientId: string, clientSecret: string, DB_URL: string, redirectUrl: string, port: number) {
     this.clientId = clientId;
     this.clientSecret = clientSecret;
     this.redirectUrl = redirectUrl;
     this.dBClient = new MongoDBClient(DB_URL);
     this.apiService = new ApiService();
     this.app = express();
-    this.port = 3000;
+    this.port = port;
     this.configureRoutes();
     this.logger = new Logger();
   }
